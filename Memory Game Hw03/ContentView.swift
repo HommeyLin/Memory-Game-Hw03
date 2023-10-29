@@ -1,7 +1,7 @@
 //
 //  ContentView.swift
 //  Memory Game Hw03
-//
+
 //  Created by saruttaya attramongkol on 18/10/2566 BE.
 //
 
@@ -22,11 +22,9 @@ struct ContentView: View {
     @State var theme:Array<String> = halloween.shuffled()
     
     var body: some View {
-        Text("Memorize!").font(.largeTitle)
         VStack{
-            ScrollView{
-                cards
-            }
+            Text("Memorize!").font(.largeTitle)
+            cards
             cardTheme
         }
         .padding()
@@ -46,11 +44,14 @@ struct ContentView: View {
         HStack {
             Spacer()
             themeHalloween
+            Spacer()
             themeAnimals
+            Spacer()
             themeSports
+            Spacer()
         }
         .imageScale(.small)
-        .font(.system(size: 20))
+        .font(.system(size: 15))
 //        .dynamicTypeSize(.large)
     }
     
@@ -58,7 +59,7 @@ struct ContentView: View {
         Button(action: {
             theme = currentTheme[offset].shuffled()
         }) {
-            Image(symbol)
+            Image(symbol).resizable().frame(width: 50, height: 50)
         }
     }
     
@@ -76,7 +77,7 @@ struct ContentView: View {
     }
     var themeSports: some View{
         VStack{
-            cardThemeAdjuster(by: 2, symbol: "819590")
+            cardThemeAdjuster(by: 2, symbol: "3311579")
             Text("Sports")
         }
     }
@@ -86,7 +87,7 @@ struct ContentView: View {
 
 struct CardView: View {
     let content: String
-    @State var isFaceUp: Bool = true
+    @State var isFaceUp: Bool = false
     
     var body: some View {
         ZStack{
